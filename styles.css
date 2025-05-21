@@ -1,19 +1,26 @@
-body{
-    font-family: "Segoe UI", sans-serif;
+.task-list {
+  min-height: 200px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #2866a4;
 }
 
-.col > .p-3 {
-    color: rgb(55, 55, 55);
-    background-color: #e9ecef;
-    border-radius: 8px;
-  }
+.card-task {
+  background: white;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.2s ease;
+}
 
-  .card-task {
-    color: black;
-    background-color: white;
-    border: 1px solid #dee2e6;
-    padding: 0.75rem;
-    margin-bottom: 0.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-  }
+.card-task:active {
+  cursor: grabbing;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
+}
+
+.bg-warning-subtle {
+  background-color: #fff3cd !important;
+}

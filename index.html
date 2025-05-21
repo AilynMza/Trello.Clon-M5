@@ -1,66 +1,81 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trello CLON</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trello Clon</title>
 
-     <!-- Booststrap -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="/styles.css">
-    
+    <!-- Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div id="error-message"></div>
 
-    <nav class="navbar bg-body-tertiary">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-            <img src="imgs/Trello_logo.png" alt="Trellos logo" width="100" height="30">
-          </a>
-        </div>
-      </nav>
+  <!-- NavBar-->
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="imgs/Trello_logo.png" alt="Trello logo" width="100" height="30" />
+    </a>
+    <button id="themeToggleBtn" type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+      Cambiar tema
+    </button>
+  </div>
+</nav>
 
-      <div class="container mx-5 my-3 px-4 text-center containerCards">
-        <div class="row gx-4 text-start">
-          <div class="col">
-            <div class="p-3 bg-light rounded">
-              <h5>TO DO</h5>
-              <div class="card-task">Tarea 1</div>
-              <div class="card-task">Tarea 2</div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="p-3 bg-light rounded">
-              <h5>RESEARCH</h5>
-              <div class="card-task">Investigar tema A</div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="p-3 bg-light rounded">
-              <h5>IN PROGRESS</h5>
-              <div class="card-task">Desarrollar módulo X</div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="p-3 bg-light rounded">
-              <h5>REVIEW</h5>
-              <div class="card-task">Revisar tarea 2</div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="p-3 bg-light rounded">
-              <h5>COMPLETED</h5>
-              <div class="card-task">Tarea terminada</div>
-            </div>
-          </div>
-        </div>
+<!-- Mensaje de error-->
+<div id="error-message" class="text-danger text-center mt-2"></div>
+
+<!-- Contenido -->
+<div class="container overflow-hidden text-center">
+  <div class="row text-start gx-5">
+    <div class="col">
+      <div class="p-3 bg-light rounded">
+        <h5>Por hacer</h5>
+        <button>+</button>
+        <div id="pendiente" class="task-list"></div>
       </div>
-      
+    </div>
 
+    <div class="col">
+      <div class="p-3 bg-light rounded">
+        <h5>Investigación</h5>
+        <button>+</button>
+        <div id="investigacion" class="task-list"></div>
+      </div>
+    </div>
 
-    <!-- Conexion con js-->
-    <script type="module" src="app.js"></script>
+    <div class="col">
+      <div class="p-3 bg-light rounded">
+        <h5>En Progreso</h5>
+        <button>+</button>
+        <div id="enProgreso" class="task-list"></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="p-3 bg-light rounded">
+        <h5>Revisión</h5>
+        <button>+</button>
+        <div id="revision" class="task-list"></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="p-3 bg-light rounded">
+        <h5>Terminada</h5>
+        <button>+</button>
+        <div id="terminada" class="task-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SortableJS -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+
+<!--JS -->
+<script src="app.js" type="module"></script>
 </body>
 </html>

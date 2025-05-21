@@ -104,6 +104,20 @@
         "descripcion": "Mostrar solo tareas de una persona",
         "estado": "en progreso",
         "responsable": "Emma"
+      },
+      {
+        "id": 16,
+        "titulo": "Prueba 1",
+        "descripcion": "Esto es una prueba",
+        "estado": "investigando",
+        "responsable": "Yo"
+      },
+      {
+        "id": 17,
+        "titulo": "Prueba 2",
+        "descripcion": "Esto es otra prueba",
+        "estado": "en revision",
+        "responsable": "Yo x2"
       }
     ]
   }
