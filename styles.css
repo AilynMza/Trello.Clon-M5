@@ -1,6 +1,14 @@
+.columnContainer {
+  margin-top: 80px;
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
 .task-list {
-  min-height: 200px;
-  border: 1px solid #ccc;
+  min-height: 100px;
   padding: 8px;
   border-radius: 4px;
   background-color: #2866a4;
@@ -14,13 +22,4 @@
   cursor: grab;
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
   transition: box-shadow 0.2s ease;
-}
-
-.card-task:active {
-  cursor: grabbing;
-  box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
-}
-
-.bg-warning-subtle {
-  background-color: #fff3cd !important;
 }
