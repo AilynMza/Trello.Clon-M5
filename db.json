@@ -1,119 +1,120 @@
 {
   "tareas": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Investigar drag and drop",
       "descripcion": "Ver cómo implementar arrastre entre columnas",
       "estado": "pendiente",
       "responsable": "Lu"
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Diseñar estructura HTML",
       "descripcion": "Crear el layout inicial del tablero de tareas",
       "estado": "pendiente",
       "responsable": "Emma"
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Estilizar tarjetas",
       "descripcion": "Aplicar CSS a las tareas para que se vean como tarjetas",
       "estado": "enProgreso",
       "responsable": "Sofi"
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "Agregar validaciones al formulario",
       "descripcion": "Evitar tareas vacías o sin responsable",
       "estado": "pendiente",
       "responsable": "Nico"
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "Conectar con json-server",
       "descripcion": "Consumir tareas desde el backend simulado",
       "estado": "terminada",
       "responsable": "Lu"
     },
     {
-      "id": 6,
+      "id": "6",
       "titulo": "Crear función para renderizar tareas",
       "descripcion": "Mostrar tareas en columnas según su estado",
       "estado": "enProgreso",
       "responsable": "Mati"
     },
     {
-      "id": 7,
+      "id": "7",
       "titulo": "Agregar botón para eliminar tarea",
       "descripcion": "Permitir borrar tareas con confirmación",
       "estado": "pendiente",
       "responsable": "Cami"
     },
     {
-      "id": 8,
+      "id": "8",
       "titulo": "Separar código en funciones",
       "descripcion": "Evitar repetir lógica en varias partes",
       "estado": "terminada",
       "responsable": "Lu"
     },
     {
-      "id": 9,
+      "id": "9",
       "titulo": "Agregar contador de tareas por estado",
       "descripcion": "Mostrar cuántas tareas hay en cada columna",
       "estado": "pendiente",
       "responsable": "Emma"
     },
     {
-      "id": 10,
+      "id": "10",
       "titulo": "Implementar edición de tareas",
       "descripcion": "Permitir modificar título, descripción y estado",
       "estado": "enProgreso",
       "responsable": "Sofi"
     },
     {
-      "id": 11,
+      "id": "11",
       "titulo": "Revisar errores en consola",
       "descripcion": "Limpiar errores de JavaScript en el navegador",
       "estado": "pendiente",
       "responsable": "Nico"
     },
     {
-      "id": 12,
+      "id": "12",
       "titulo": "Subir proyecto a GitHub",
       "descripcion": "Crear repositorio y subir código actualizado",
       "estado": "terminada",
       "responsable": "Lu"
     },
     {
-      "id": 13,
+      "id": "13",
       "titulo": "Crear README con instrucciones",
       "descripcion": "Explicar cómo usar y correr el proyecto",
       "estado": "pendiente",
       "responsable": "Cami"
     },
     {
-      "id": 14,
       "titulo": "Agregar estilos responsivos",
+      "responsable": "Mati",
       "descripcion": "Que se vea bien en celular",
       "estado": "pendiente",
-      "responsable": "Mati"
+      "imagen": "https://disenowebakus.net/imagenes/buen-y-mal-ejemplo-diseno-web-responsive.jpg",
+      "id": "14"
     },
     {
-      "id": 15,
+      "id": "15",
       "titulo": "Agregar filtro por responsable",
       "descripcion": "Mostrar solo tareas de una persona",
       "estado": "enProgreso",
       "responsable": "Emma"
     },
     {
-      "id": 16,
+      "id": "16",
       "titulo": "Prueba 1",
       "descripcion": "Esto es una prueba",
       "estado": "investigando",
       "responsable": "Yo"
     },
     {
-      "id": 17,
+      "id": "17",
       "titulo": "Prueba 2",
       "descripcion": "Esto es otra prueba",
       "estado": "enRevision",
@@ -121,12 +122,12 @@
       "imagen": "imgs/gato-calvo.gif"
     },
     {
-      "id": "4817",
-      "titulo": "afd",
-      "descripcion": "afd",
+      "titulo": "hola crayola",
+      "responsable": "yo x2",
+      "descripcion": "aaaa",
       "estado": "investigando",
-      "responsable": "af",
-      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_i2_vJN5rUWFIs3kXNqiy2EyzgYXwKUFvJg&s"
+      "imagen": "",
+      "id": "aef9"
     }
   ]
 }

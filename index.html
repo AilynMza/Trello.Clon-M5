@@ -25,12 +25,7 @@
     <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
-          <img
-            src="imgs/Trello_logo.png"
-            alt="Bootstrap"
-            width="100"
-            height="30"
-          />
+          <img src="imgs/Milogo.png" alt="Bootstrap" width="250" height="50" />
         </a>
         <button
           class="navbar-toggler"
@@ -62,9 +57,9 @@
               <li class="nav-item">
                 <button class="nav-link">Modo oscuro</button>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <button class="nav-link">Modo motivación</button>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -82,23 +77,32 @@
               placeholder="Busqueda por Autor"
               aria-label="Recipient’s username"
               aria-describedby="button-addon2"
+              id="autorSearch"
             />
 
-            <select class="form-select" id="inputGroupSelect02">
+            <select class="form-select" id="statusSelector">
               <option selected disabled hidden>Busqueda por progreso...</option>
-              <option value="1">Por hacer</option>
-              <option value="2">Investigando</option>
-              <option value="3">En progreso</option>
-              <option value="4">Revisión</option>
-              <option value="5">Terminada</option>
+              <option value="pendiente">Por hacer</option>
+              <option value="investigando">Investigando</option>
+              <option value="enProgreso">En progreso</option>
+              <option value="enRevision">Revisión</option>
+              <option value="terminada">Terminada</option>
             </select>
 
             <button
               class="btn btn-outline-secondary"
               type="button"
-              id="button-addon2"
+              id="filter-btn"
             >
               Filtrar
+            </button>
+
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="clean-filter-btn"
+            >
+              <i class="bi bi-trash3-fill"></i>
             </button>
           </div>
         </div>
@@ -271,6 +275,84 @@
               id="createModalBtn"
             >
               Crear tarjeta
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para editar tarjeta-->
+    <div
+      class="modal fade"
+      id="editarTarjeta"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="editTaskModal">
+              Edita la tarjeta
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="modal-edit-form">
+              <input type="hidden" id="status" />
+              <div class="mb-3">
+                <label for="edit-title" class="col-form-label">Titulo:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="edit-title"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label for="edit-owner" class="col-form-label">Autor:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="edit-owner"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="edit-task-description">Descripción</label>
+                <textarea
+                  class="form-control"
+                  placeholder="Describe tú tarea"
+                  id="edit-task-description"
+                  style="height: 100px"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="edit-task-img"
+                  >Agrega URL para imagen (Opcional)</label
+                >
+                <input
+                  class="form-control"
+                  placeholder="URL de imagen"
+                  id="edit-task-img"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              form="modal-form"
+              type="submit"
+              class="btn btn-primary"
+              id="saveModalBtn"
+            >
+              Guardar
             </button>
           </div>
         </div>
