@@ -13,6 +13,7 @@ let editTaskId = "";
 const columnContainer = document.querySelector(`#column-container`);
 const createModal = document.querySelector(`#crearTarjeta`);
 const editModal = document.querySelector(`#editarTarjeta`);
+const btnColorMode = document.getElementById("toggleColorMode");
 
 // Input para filtrado
 const filterBtn = document.querySelector(`#filter-btn`);
@@ -76,8 +77,7 @@ function createCard(title, description, status, owner, img, id) {
   contenedor.insertAdjacentHTML(
     "beforeend",
     `
-    <div id="revision" class="task-list">
-      <div class="card mb-3">
+      <div class="card mb-3" data-task-id="${id}">
         <img src="${img == undefined ? "" : img}" class="card-img-top" alt="" />
         <div class="card-body pt-1">
           <div class="dropdown text-end">
@@ -99,7 +99,6 @@ function createCard(title, description, status, owner, img, id) {
           </p>
         </div>
       </div>
-    </div>
   `
   );
 }
@@ -158,7 +157,6 @@ async function editTask(event) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(taskObject),
     });
-    const taskEdited = await editTaskResponse.json();
     editModalBS.hide();
 
     clearFilter();
@@ -295,9 +293,76 @@ columnContainer.addEventListener(`click`, async (event) => {
   }
 });
 
+// Evento para cambiar modo de color
+btnColorMode.addEventListener(`click`, () => {
+  const newTheme =
+    document.body.getAttribute("data-bs-theme") == "dark" ? "light" : "dark";
+  document.body.setAttribute("data-bs-theme", newTheme);
+});
+
 // TODO: Validar formulario
 // TODO: cambiar a ingles funciones
 // TODO: Funcion para eliminar tarjetas
 // TODO: Funcion para editar tarjetas
 // TODO: Drag and drop
 // TODO: agregar error obtener tareas
+
+const containerToDo = document.querySelector("#pendiente");
+const containerSearch = document.querySelector("#investigando");
+const containerProgress = document.querySelector("#enProgreso");
+const containerReview = document.querySelector("#enRevision");
+const containerDone = document.querySelector("#terminada");
+
+Sortable.create(containerToDo, {
+  group: "tasks",
+  animation: 150,
+  onEnd: onMoveHandler,
+});
+Sortable.create(containerSearch, {
+  group: "tasks",
+  animation: 150,
+  onEnd: onMoveHandler,
+});
+Sortable.create(containerProgress, {
+  group: "tasks",
+  animation: 150,
+  onEnd: onMoveHandler,
+});
+Sortable.create(containerReview, {
+  group: "tasks",
+  animation: 150,
+  onEnd: onMoveHandler,
+});
+Sortable.create(containerDone, {
+  group: "tasks",
+  animation: 150,
+  onEnd: onMoveHandler,
+});
+
+async function onMoveHandler(event) {
+  if (event.from != event.to) {
+    const id = event.item.getAttribute("data-task-id");
+    const newStatus = event.to.id;
+    console.log(event.from);
+    console.log(event.to);
+    console.log(event.item);
+    try {
+      await fetch(`${API_URL}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ estado: newStatus }),
+      });
+      Swal.fire({
+        text: "Se ha actualizado el estado",
+        icon: "success",
+      });
+    } catch (error) {
+      event.from.insertBefore(event.item, event.from.children[event.oldIndex]);
+      Swal.fire({
+        title: error.message,
+        text: "Error al cambiar estado de tarjeta.",
+        icon: "error",
+      });
+    }
+  }
+}

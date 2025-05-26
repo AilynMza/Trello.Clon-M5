@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,7 +20,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-bs-theme="dark">
     <!-- NavBar-->
     <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
@@ -55,7 +55,18 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <button class="nav-link">Modo oscuro</button>
+                <div class="form-check form-switch" id="toggleColorMode">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="checkNativeSwitch"
+                    switch
+                  />
+                  <label class="form-check-label" for="checkNativeSwitch">
+                    Cambiar tema
+                  </label>
+                </div>
               </li>
               <!-- <li class="nav-item">
                 <button class="nav-link">Modo motivación</button>
