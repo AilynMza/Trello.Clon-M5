@@ -91,7 +91,7 @@ Este proyecto es un clon funcional de Trello, creado con **HTML, CSS, JavaScript
 
 ## 💡 Autor
 
-Desarrollado por [Ailyn Mza].
+Desarrollado por [Ailyn Mza](https://github.com/AilynMza).
 
 ---
 
