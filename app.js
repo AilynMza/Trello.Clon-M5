@@ -6,11 +6,11 @@ const API_URL = `http://localhost:3000/tareas`;
 let statusModalBtn = "";
 let taskArray = [];
 let filteredTaskArray = [];
-// Para conocer el id de las tarjetas
+// Para conocer el id de las tarjetas y poder editar
 let editTaskId = "";
 
-// DOM - Mensaje de error
-const errorMessage = document.querySelector(`#error-message`);
+// DOM -
+const columnContainer = document.querySelector(`#column-container`);
 const createModal = document.querySelector(`#crearTarjeta`);
 const editModal = document.querySelector(`#editarTarjeta`);
 
@@ -36,7 +36,7 @@ const editInputTaskDescription = document.querySelector(
   `#edit-task-description`
 );
 const editInputImg = document.querySelector(`#edit-task-img`);
-const editTaskBtn = document.querySelector(`#saveModalBtn`);
+const saveTaskBtn = document.querySelector(`#saveModalBtn`);
 const editStatusInput = document.querySelector(`#status`);
 
 // Funcion para obtener tareas
@@ -87,7 +87,7 @@ function createCard(title, description, status, owner, img, id) {
               <ul class="dropdown-menu">
                 <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editarTarjeta" data-taskId="${id}"> <i class="bi bi-pencil-fill"></i> Editar tarjeta</button></li>
 
-                <li><button class="dropdown-item" onclick="deleteTask()"><i class="bi bi-trash-fill text-danger"></i> Eliminar tarjeta</button></li>
+                <li><button class="dropdown-item deleteBtn" data-taskId="${id}"><i class="bi bi-trash-fill text-danger"></i> Eliminar tarjeta</button></li>
               </ul>
           </div>
           <h5 class="card-title">${title}</h5>
@@ -177,8 +177,17 @@ async function editTask(event) {
   }
 }
 
-async function deleteTask() {
+async function deleteTask(deleteTaskId) {
   try {
+    const deleteTaskResponse = await fetch(`${API_URL}/${deleteTaskId}`, {
+      method: "DELETE",
+    });
+    clearFilter();
+    Swal.fire({
+      title: "Eliminado",
+      text: "Se ha borrado exitosamente la tarea",
+      icon: "success",
+    });
   } catch (error) {
     Swal.fire({
       title: error.message,
@@ -195,6 +204,7 @@ function clearFilter() {
   filteredTaskArray = taskArray;
   getTasks();
 }
+
 // Event Listener
 // Evento de crear y editar modal
 createModal.addEventListener(`show.bs.modal`, (event) => {
@@ -257,9 +267,33 @@ filterBtn.addEventListener(`click`, () => {
   }
 });
 
+// Evento para limpiar filtros
 cleanFilterBtn.addEventListener(`click`, clearFilter);
 
-editTaskBtn.addEventListener(`click`, editTask);
+// Evento para guardar tarea
+saveTaskBtn.addEventListener(`click`, editTask);
+
+// Evento para eliminar tarjeta
+columnContainer.addEventListener(`click`, async (event) => {
+  const deleteBtn = event.target.closest(".deleteBtn");
+  // Le dio clic al boton borrar
+  if (deleteBtn) {
+    const taskId = deleteBtn.getAttribute("data-taskId");
+    const result = await Swal.fire({
+      title: "¿Estas seguro?",
+      text: "Es una acción irreversible",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    });
+    if (result.isConfirmed) {
+      deleteTask(taskId);
+    }
+  }
+});
 
 // TODO: Validar formulario
 // TODO: cambiar a ingles funciones

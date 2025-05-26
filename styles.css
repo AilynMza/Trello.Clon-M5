@@ -26,8 +26,13 @@
 
 .owner {
   background-color: rgb(204, 246, 255);
+  color: black;
   border-radius: 10px;
   font-weight: bolder;
   width: min-content;
   padding: 5px 20px;
+}
+
+.column {
+  background-color: rgb(60, 34, 34);
 }
