@@ -4,8 +4,9 @@ Este proyecto es un clon funcional de Trello, creado con **HTML, CSS, JavaScript
 
 ## 🎉 Repositorio en Git y GithubPages
 
-[Repositorio en Git](https://github.com/AilynMza/Trello.Clon-M5)
-[Deploy en GithubPages](https://ailynmza.github.io/Trello.Clon-M5/)
+[Repositorio en Git](https://github.com/AilynMza/Trello.Clon-M5).
+
+[Deploy en GithubPages](https://ailynmza.github.io/Trello.Clon-M5/).
 
 ## 🎯 Funcionalidades principales
 
