@@ -8,12 +8,21 @@ let taskArray = [];
 let filteredTaskArray = [];
 // Para conocer el id de las tarjetas y poder editar
 let editTaskId = "";
+// Para saber si el gato esta escondido o no
+let petDisplay = "none";
 
 // DOM -
 const columnContainer = document.querySelector(`#column-container`);
 const createModal = document.querySelector(`#crearTarjeta`);
 const editModal = document.querySelector(`#editarTarjeta`);
-const btnColorMode = document.getElementById("toggleColorMode");
+// Boton para cambiar de método
+const btnColorMode = document.querySelector("#toggleColorMode");
+
+// DOM Pet Mode
+// Boton para cambiar al modo mascota
+const btnPetMode = document.querySelector(`#togglePetMode`);
+// Variable del div del widget pet
+const divWidget = document.querySelector(`#pet-widget`);
 
 // Input para filtrado
 const filterBtn = document.querySelector(`#filter-btn`);
@@ -39,6 +48,13 @@ const editInputTaskDescription = document.querySelector(
 const editInputImg = document.querySelector(`#edit-task-img`);
 const saveTaskBtn = document.querySelector(`#saveModalBtn`);
 const editStatusInput = document.querySelector(`#status`);
+
+// DOM de contenedores para el sortable
+const containerToDo = document.querySelector("#pendiente");
+const containerSearch = document.querySelector("#investigando");
+const containerProgress = document.querySelector("#enProgreso");
+const containerReview = document.querySelector("#enRevision");
+const containerDone = document.querySelector("#terminada");
 
 // Funcion para obtener tareas
 async function getTasks() {
@@ -69,6 +85,7 @@ function renderTasks() {
     const id = tarea.id;
     createCard(title, description, status, owner, img, id);
   }
+  renderPet();
 }
 
 // Funcion para crear la tarjeta final
@@ -116,6 +133,18 @@ getTasks();
 // Funcion para crear una tarjeta en la base de datos y validarlo
 async function createTaskDb(taskObject) {
   try {
+    if (
+      taskObject.titulo == "" ||
+      taskObject.descripcion == "" ||
+      taskObject.responsable == ""
+    ) {
+      Swal.fire({
+        title: "Información faltante.",
+        text: "Completa todos los campos antes de enviar el formulario",
+        icon: "error",
+      });
+      return;
+    }
     const taskResponse = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -201,6 +230,83 @@ function clearFilter() {
   statusInput.value = "Busqueda por progreso...";
   filteredTaskArray = taskArray;
   getTasks();
+}
+
+// Funcion para actualiza base de datos en caso del Sortable
+async function onMoveHandler(event) {
+  if (event.from != event.to) {
+    const id = event.item.getAttribute("data-task-id");
+    const newStatus = event.to.id;
+    console.log(event.from);
+    console.log(event.to);
+    console.log(event.item);
+    try {
+      await fetch(`${API_URL}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ estado: newStatus }),
+      });
+      console.log(newStatus);
+      // Swal.fire({
+      //   text: "Se ha actualizado el estado",
+      //   icon: "success",
+      // });
+    } catch (error) {
+      event.from.insertBefore(event.item, event.from.children[event.oldIndex]);
+      Swal.fire({
+        title: error.message,
+        text: "Error al cambiar estado de tarjeta.",
+        icon: "error",
+      });
+    }
+  }
+}
+
+// Funcion para la mascota
+// 0 - 35% enojao\
+// 36 -70% triste/cansado
+// 71% pa delante - Feliz
+// 100% muy feliz
+function renderPet() {
+  // Limpiamos gatos
+  divWidget.innerHTML = "";
+  const totalCards = taskArray.length;
+  const completedCards = taskArray.filter((card) => {
+    return card.estado == "terminada";
+  }).length;
+  //ncartasTerminadas*100%/nocartasTotales
+  const perFinishedTasks = (completedCards * 100) / totalCards;
+  console.log(perFinishedTasks);
+  // Dibujamos al gato bueno'
+  if (perFinishedTasks <= 35) {
+    divWidget.insertAdjacentHTML(
+      "beforeend",
+      `
+    <img src="imgs/gato-pixelart-enojado.png" alt="pet mode activated" />
+    `
+    );
+  } else if (perFinishedTasks <= 70) {
+    divWidget.insertAdjacentHTML(
+      "beforeend",
+      `
+    <img src="imgs/gato-pixelart-triste.png" alt="pet mode activated" />
+    `
+    );
+  } else if (perFinishedTasks < 100) {
+    divWidget.insertAdjacentHTML(
+      "beforeend",
+      `
+    <img src="imgs/gato-pixelart-feliz.png" alt="pet mode activated" />
+    `
+    );
+  } else {
+    divWidget.insertAdjacentHTML(
+      "beforeend",
+      `
+    <img src="imgs/gato-pixelart-fiesta.png" alt="pet mode activated" />
+    `
+    );
+  }
 }
 
 // Event Listener
@@ -300,19 +406,7 @@ btnColorMode.addEventListener(`click`, () => {
   document.body.setAttribute("data-bs-theme", newTheme);
 });
 
-// TODO: Validar formulario
-// TODO: cambiar a ingles funciones
-// TODO: Funcion para eliminar tarjetas
-// TODO: Funcion para editar tarjetas
-// TODO: Drag and drop
-// TODO: agregar error obtener tareas
-
-const containerToDo = document.querySelector("#pendiente");
-const containerSearch = document.querySelector("#investigando");
-const containerProgress = document.querySelector("#enProgreso");
-const containerReview = document.querySelector("#enRevision");
-const containerDone = document.querySelector("#terminada");
-
+// Eventos para el Sortable (drag and drop)
 Sortable.create(containerToDo, {
   group: "tasks",
   animation: 150,
@@ -339,30 +433,18 @@ Sortable.create(containerDone, {
   onEnd: onMoveHandler,
 });
 
-async function onMoveHandler(event) {
-  if (event.from != event.to) {
-    const id = event.item.getAttribute("data-task-id");
-    const newStatus = event.to.id;
-    console.log(event.from);
-    console.log(event.to);
-    console.log(event.item);
-    try {
-      await fetch(`${API_URL}/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ estado: newStatus }),
-      });
-      Swal.fire({
-        text: "Se ha actualizado el estado",
-        icon: "success",
-      });
-    } catch (error) {
-      event.from.insertBefore(event.item, event.from.children[event.oldIndex]);
-      Swal.fire({
-        title: error.message,
-        text: "Error al cambiar estado de tarjeta.",
-        icon: "error",
-      });
-    }
-  }
-}
+// TODO: Validar formulario
+// TODO: cambiar a ingles funciones
+// TODO: Funcion para eliminar tarjetas
+// TODO: Funcion para editar tarjetas
+// TODO: Drag and drop
+// TODO: agregar error obtener tareas
+
+// Evento para cambiar al modo mascota
+btnPetMode.addEventListener(`click`, () => {
+  // divWidget.computedStyle.display
+  console.log(getComputedStyle(divWidget).display);
+  const display =
+    getComputedStyle(divWidget).display == "none" ? "block" : "none";
+  divWidget.style.display = display;
+});

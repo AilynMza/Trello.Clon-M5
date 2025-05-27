@@ -2,6 +2,11 @@
 
 Este proyecto es un clon funcional de Trello, creado con **HTML, CSS, JavaScript**, **Bootstrap 5** y **SweetAlert2**, con persistencia de datos mediante [`json-server`](https://github.com/typicode/json-server). Incluye funcionalidades modernas como edición, eliminación, drag-and-drop y filtrado de tarjetas.
 
+## 🎉 Repositorio en Git y GithubPages
+
+[Repositorio en Git](https://github.com/AilynMza/Trello.Clon-M5)
+[Deploy en GithubPages](https://ailynmza.github.io/Trello.Clon-M5/)
+
 ## 🎯 Funcionalidades principales
 
 - ✅ Crear tareas con título, descripción, autor y URL de imagen.

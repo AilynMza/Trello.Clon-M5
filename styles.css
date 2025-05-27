@@ -36,3 +36,12 @@
 .column {
   background-color: rgb(60, 34, 34);
 }
+
+/* pet-mode */
+#pet-widget {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  bottom: 20px;
+  right: 20px;
+}

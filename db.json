@@ -4,42 +4,43 @@
       "id": "1",
       "titulo": "Investigar drag and drop",
       "descripcion": "Ver cómo implementar arrastre entre columnas",
-      "estado": "pendiente",
+      "estado": "enProgreso",
       "responsable": "Lu"
     },
     {
-      "id": "2",
       "titulo": "Diseñar estructura HTML",
+      "responsable": "Cami",
       "descripcion": "Crear el layout inicial del tablero de tareas",
       "estado": "pendiente",
-      "responsable": "Emma"
+      "imagen": "",
+      "id": "2"
     },
     {
       "id": "3",
       "titulo": "Estilizar tarjetas",
       "descripcion": "Aplicar CSS a las tareas para que se vean como tarjetas",
-      "estado": "enProgreso",
+      "estado": "terminada",
       "responsable": "Sofi"
     },
     {
       "id": "4",
       "titulo": "Agregar validaciones al formulario",
       "descripcion": "Evitar tareas vacías o sin responsable",
-      "estado": "pendiente",
+      "estado": "terminada",
       "responsable": "Nico"
     },
     {
       "id": "5",
       "titulo": "Conectar con json-server",
       "descripcion": "Consumir tareas desde el backend simulado",
-      "estado": "terminada",
+      "estado": "enRevision",
       "responsable": "Lu"
     },
     {
       "id": "6",
       "titulo": "Crear función para renderizar tareas",
       "descripcion": "Mostrar tareas en columnas según su estado",
-      "estado": "enProgreso",
+      "estado": "pendiente",
       "responsable": "Mati"
     },
     {
@@ -60,7 +61,7 @@
       "id": "9",
       "titulo": "Agregar contador de tareas por estado",
       "descripcion": "Mostrar cuántas tareas hay en cada columna",
-      "estado": "pendiente",
+      "estado": "enRevision",
       "responsable": "Emma"
     },
     {
@@ -74,7 +75,7 @@
       "id": "11",
       "titulo": "Revisar errores en consola",
       "descripcion": "Limpiar errores de JavaScript en el navegador",
-      "estado": "pendiente",
+      "estado": "terminada",
       "responsable": "Nico"
     },
     {
@@ -88,14 +89,14 @@
       "id": "13",
       "titulo": "Crear README con instrucciones",
       "descripcion": "Explicar cómo usar y correr el proyecto",
-      "estado": "pendiente",
+      "estado": "terminada",
       "responsable": "Cami"
     },
     {
       "titulo": "Agregar estilos responsivos",
       "responsable": "Mati",
       "descripcion": "Que se vea bien en celular",
-      "estado": "pendiente",
+      "estado": "terminada",
       "imagen": "https://disenowebakus.net/imagenes/buen-y-mal-ejemplo-diseno-web-responsive.jpg",
       "id": "14"
     },
@@ -103,31 +104,31 @@
       "id": "15",
       "titulo": "Agregar filtro por responsable",
       "descripcion": "Mostrar solo tareas de una persona",
-      "estado": "enProgreso",
+      "estado": "terminada",
       "responsable": "Emma"
     },
     {
       "id": "16",
       "titulo": "Prueba 1",
       "descripcion": "Esto es una prueba",
-      "estado": "investigando",
+      "estado": "enProgreso",
       "responsable": "Yo"
-    },
-    {
-      "id": "17",
-      "titulo": "Prueba 2",
-      "descripcion": "Esto es otra prueba",
-      "estado": "enRevision",
-      "responsable": "Yo x2",
-      "imagen": "imgs/gato-calvo.gif"
     },
     {
       "id": "fa21",
       "titulo": "Comprar pastes",
       "descripcion": "Se necesita comprar comida porque ya hace hambre a estas horas de la noche que estoy haciendo mi proyecto. Send help",
-      "estado": "investigando",
+      "estado": "enRevision",
       "responsable": "Fer y yo",
       "imagen": "https://img.wattpad.com/33c685e994454bfbf8f24022dfbec6d0abc10d6b/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f6539636b493576517347514451673d3d2d313433303537303939362e3137626466366638663230393039643233343431303135343039342e6a7067?s=fit&w=720&h=720"
+    },
+    {
+      "id": "b956",
+      "titulo": "Presentacion",
+      "descripcion": "estoy en mi presentacion",
+      "estado": "pendiente",
+      "responsable": "Dev",
+      "imagen": "https://media.tenor.com/AN83u7YyqwUAAAAM/maxwell-the-cat.gif"
     }
   ]
 }
