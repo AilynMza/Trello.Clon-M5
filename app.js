@@ -242,7 +242,7 @@ async function onMoveHandler(event) {
     console.log(event.item);
     try {
       await fetch(`${API_URL}/${id}`, {
-        method: "PATCH",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ estado: newStatus }),
       });
