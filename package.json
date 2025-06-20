@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Este proyecto es un clon funcional de Trello, creado con **HTML, CSS, JavaScript**, **Bootstrap 5** y **SweetAlert2**, con persistencia de datos mediante [`json-server`](https://github.com/typicode/json-server). Incluye funcionalidades modernas como edición, eliminación, drag-and-drop y filtrado de tarjetas.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "json-server db.json"
   },
