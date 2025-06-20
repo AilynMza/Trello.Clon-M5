@@ -1,5 +1,5 @@
 // URL de la API REST donde se almacenan las tareas
-const API_URL = `http://localhost:3000/tareas`;
+const API_URL = `https://68550ef36a6ef0ed66311813.mockapi.io/tareas`;
 
 // Variables globales
 // Para saber que modal se abre
